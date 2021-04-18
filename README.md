@@ -16,7 +16,7 @@ sudo apt install openjdk-11-jre-headless
 ```
 Clone the  repository and configure the server.prop
  
-    rootUrl= http://newi.ga  ## Thevpublic url of the server
+    rootUrl= http://newi.ga  ## The public url of the server
     port=80  ## The port number 
 
 Then execute the command to start the server
