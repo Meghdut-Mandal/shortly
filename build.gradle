@@ -11,12 +11,14 @@ buildscript {
 plugins {
     id 'application'
     id 'org.jetbrains.kotlin.jvm' version '1.4.32'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+
 }
 apply plugin: 'com.squareup.sqldelight'
 
 group "shortner.io"
 version "0.0.1"
-mainClassName = "shortner.io.ApplicationKt"
+mainClassName = "shortner.io.Application"
 
 repositories {
     mavenCentral()
@@ -32,10 +34,21 @@ dependencies {
     testImplementation "io.ktor:ktor-server-tests:$ktor_version"
 
 }
-
-
-sqldelight {
-    Database { // This will be the name of the generated database class.
-        packageName = "shortner.io"
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'shortner.io.Application'
+        )
     }
 }
+shadowJar {
+    archiveBaseName.set('shortly')
+    archiveClassifier.set('')
+    archiveVersion.set('')
+
+}
+artifacts {
+    archives shadowJar
+}
+
+jar.dependsOn shadowJar

@@ -4,12 +4,15 @@ import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import shortner.io.plugins.*
 
-
-
-
-fun main() {
-    embeddedServer(Netty, port = 8086) {
-        configureRouting()
-        configureMonitoring()
-    }.start(wait = true)
+class Application {
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            embeddedServer(Netty, port = 8086) {
+                configureRouting()
+                configureMonitoring()
+            }.start(wait = true)
+        }
+    }
 }
+
