@@ -8,7 +8,7 @@ class Application {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            embeddedServer(Netty, port = 8086) {
+            embeddedServer(Netty, port = Datastore["port"]!!.toInt()) {
                 configureRouting()
                 configureMonitoring()
             }.start(wait = true)
