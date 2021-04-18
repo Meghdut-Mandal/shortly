@@ -5,6 +5,7 @@ Test link :-  https://newi.ga/
 ## API 
 
  `/{shortCode}`   :  **GET**  ->  Redirects to the specified URL, 400 Bad request if invalid code
+ <br>
 `/generate  `    : **POST**  JSON  Body   { "link" : "www.google.com"  }   ->
  Return a shortned url as    {  "shortUrl": "https://newi.ga/p5l08177" }
 
