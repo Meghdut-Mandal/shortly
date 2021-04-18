@@ -47,6 +47,9 @@
     <a> Shortened Link </a>
     <br>
     <a href="$link "> $link </a>
+    <br>
+    <br>
+<button onclick="location.href = '$root';" id="myButton" class="float-left submit-button" >Shorten another link</button>
 
 
   </body>

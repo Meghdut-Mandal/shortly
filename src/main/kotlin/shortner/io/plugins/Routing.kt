@@ -78,12 +78,12 @@ fun Application.configureRouting() {
             if (Datastore.allKeys.contains(longCode)) {
                 val shortCode =
                     Datastore[longCode] ?: throw IllegalArgumentException("this should happen")
-                return@post call.respond(VelocityContent("templates/shortened.vl",mapOf("link" to "$rootUrl/$shortCode")))
+            return@post call.respond(VelocityContent("templates/shortened.vl",mapOf("link" to "$rootUrl/$shortCode","root" to rootUrl.toString())))
             } else {
                 val shortCode = System.currentTimeMillis().toString(35)
                 Datastore[longCode] = shortCode
                 Datastore[shortCode] = longCode
-                return@post call.respond(VelocityContent("templates/shortened.vl",mapOf("link" to "$rootUrl/$shortCode")))
+                return@post call.respond(VelocityContent("templates/shortened.vl",mapOf("link" to "$rootUrl/$shortCode","root" to rootUrl.toString())))
             }
         }
     }
