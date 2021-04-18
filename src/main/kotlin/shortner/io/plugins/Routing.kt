@@ -39,15 +39,24 @@ fun Application.configureRouting() {
         }
 
         get<LoadUrl>{
+
+            if (it.code.isNullOrBlank())
+            {
+                return@get call.respond("Hello there!!")
+
+            }
             if (Datastore.allKeys.contains(it.code)){
-                val longcode=Datastore[it.code]
+                val longcode=Datastore[it.code!!]
                 val urlLink = String(Base64.getDecoder().decode(longcode))
 
               return@get  call.respondRedirect(urlLink)
             }
           return@get  call.respond(HttpStatusCode.BadRequest,"Bad Url")
         }
-
+        get("/")
+        {
+            return@get call.respond("Hello there!!")
+        }
     }
 }
 
@@ -59,7 +68,7 @@ data class LinkRequest(val link: String)
 class Generate
 
 @Location("/{code}")
-data class LoadUrl(val code:String)
+data class LoadUrl(val code:String?)
 
 
 
