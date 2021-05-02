@@ -11,15 +11,20 @@ Test link :-  https://newi.ga/
 
 ## Intalling 
 
-```
-sudo apt install openjdk-11-jre-headless
-```
 Clone the  repository and configure the server.prop
  
     rootUrl= http://newi.ga  ## The public url of the server
     port=80  ## The port number 
 
+
+Using docker 
+1. Build the docker image
+```
+ docker build -t shortly .
+```
+2. Run the docker container 
+
 Then execute the command to start the server
 ```
- java -jar build/libs/shortly.jar 
+ docker run -dp 8080:8080 shortly
 ```
